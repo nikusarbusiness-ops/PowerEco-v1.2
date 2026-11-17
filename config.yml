@@ -1,0 +1,15 @@
+# CoreEco Konfiguration
+currency:
+  symbol: "$"
+  singular: "Coin"
+  plural: "Coins"
+start-balance: 1000.0
+auction:
+  tax-percent: 5.0
+  duration-hours: 48
+  default-max-listings: 10   # per LuckPerms überschreibbar: coreeco.ah.limit.<zahl>
+  min-price: 1.0
+orders:
+  max-per-player: 5
+bounty:
+  min-amount: 100.0

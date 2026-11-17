@@ -1,0 +1,53 @@
+name: CoreEco
+main: de.coreeco.CoreEco
+version: ${project.version}
+api-version: '1.21'
+author: CoreEco
+description: Economy-Plugin mit Auction House, Orders, Shop, Baltop-GUI und Bounties
+softdepend: [Vault, PlaceholderAPI, LuckPerms, SimpleScore]
+commands:
+  bal:
+    description: Kontostand anzeigen
+    aliases: [balance, money]
+    permission: coreeco.balance
+  pay:
+    description: Geld senden
+    permission: coreeco.pay
+  eco:
+    description: Admin-Economy-Befehl
+    permission: coreeco.admin
+  baltop:
+    description: Reichste Spieler
+    aliases: [balancetop]
+    permission: coreeco.baltop
+  ah:
+    description: Auction House
+    aliases: [auction, auctionhouse]
+    permission: coreeco.ah
+  orders:
+    description: Orders (Items bestellen)
+    aliases: [order]
+    permission: coreeco.orders
+  bounty:
+    description: Kopfgelder
+    aliases: [kopfgeld]
+    permission: coreeco.bounty
+  shop:
+    description: Server-Shop (Perlen, Totems, Crystals ...)
+    aliases: [store, kaufen]
+    permission: coreeco.shop
+  sell:
+    description: Items verkaufen
+    aliases: [verkaufen]
+    permission: coreeco.sell
+permissions:
+  coreeco.balance: {default: true}
+  coreeco.balance.others: {default: true}
+  coreeco.pay: {default: true}
+  coreeco.baltop: {default: true}
+  coreeco.ah: {default: true}
+  coreeco.orders: {default: true}
+  coreeco.bounty: {default: true}
+  coreeco.shop: {default: true}
+  coreeco.sell: {default: true}
+  coreeco.admin: {default: op}
