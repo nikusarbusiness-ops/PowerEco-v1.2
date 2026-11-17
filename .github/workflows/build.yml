@@ -17,11 +17,17 @@ jobs:
       - name: Code auschecken
         uses: actions/checkout@v5
 
-      - name: Quellcode prüfen
+      - name: Ordnerstruktur herstellen (falls Dateien flach hochgeladen wurden)
         run: |
+          if [ ! -f src/main/java/de/coreeco/CoreEco.java ]; then
+            mkdir -p src/main/java/de/coreeco src/main/resources
+            mv ./*.java src/main/java/de/coreeco/ 2>/dev/null || true
+            mv plugin.yml config.yml src/main/resources/ 2>/dev/null || true
+          fi
           test -f pom.xml || { echo "::error::pom.xml fehlt im Repo-Root"; exit 1; }
-          test -f src/main/resources/plugin.yml || { echo "::error::src/main/resources/plugin.yml fehlt - der Ordner src wurde nicht hochgeladen"; exit 1; }
-          test -f src/main/java/de/coreeco/CoreEco.java || { echo "::error::src/main/java/de/coreeco/CoreEco.java fehlt - der Ordner src wurde nicht hochgeladen"; exit 1; }
+          test -f src/main/java/de/coreeco/CoreEco.java || { echo "::error::CoreEco.java fehlt im Repo"; exit 1; }
+          test -f src/main/resources/plugin.yml || { echo "::error::plugin.yml fehlt im Repo"; exit 1; }
+          find src -type f | sort
 
       - name: Java 21 einrichten
         uses: actions/setup-java@v5
